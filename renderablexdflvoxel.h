@@ -15,6 +15,7 @@ private:
 
     Vector3f position;
     float volume;
+    float radius;
 
 };
 

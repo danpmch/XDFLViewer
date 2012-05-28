@@ -1,6 +1,7 @@
 #include "renderablexdflvoxel.h"
 #include <iostream>
 #include <cstdio>
+#include <cmath>
 
 RenderableXDFLVoxel::RenderableXDFLVoxel( QDomNode &voxel_node )
 {
@@ -25,6 +26,9 @@ RenderableXDFLVoxel::RenderableXDFLVoxel( QDomNode &voxel_node )
   QDomNode volume_node = voxel_element.elementsByTagName( "volume" ).at( 0 );
   assert( volume_node.isElement() );
   volume = volume_node.toElement().text().toFloat();
+
+  radius = volume / ( 4 / 3 ) / 3.14159265;
+  radius = pow( radius, 1.0/3.0 );
 }
 
 void RenderableXDFLVoxel::glRender()
@@ -33,8 +37,9 @@ void RenderableXDFLVoxel::glRender()
   static const float RESOLUTION = 10;
 
   // TODO: figure out how to take a cube root
-  float radius = volume / ( 4 / 3 );
-  radius = sqrt( radius ) / 2;
+//  float radius = volume / ( 4 / 3 ) / 3.14159265;
+//  radius = sqrt( radius ) / 2;
+//  radius = pow( radius, 1.0/3.0 );
 
   glPushMatrix();
     glColor3f( 1.0f, 0.0f, 0.0f );

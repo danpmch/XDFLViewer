@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QString *xdfl = NULL;
-    if( argc == 2 )
+    if( argc > 1 )
       xdfl = new QString( argv[ 1 ] );
 
     MainWindow w( xdfl );
