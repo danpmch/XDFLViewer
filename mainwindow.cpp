@@ -60,9 +60,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event) {
-  QWidget::resizeEvent(event);
   view->resize(ui->graphicsView->size());
   view->repaint();
+  QWidget::resizeEvent(event);
 }
 
 void MainWindow::keyPressEvent( QKeyEvent *event )
