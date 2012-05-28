@@ -37,7 +37,7 @@ QDomDocument * MainWindow::load_document( QString *xdfl_path )
   QFile file( *xdfl_path );
   if( !file.open( QIODevice::ReadOnly ) )
   {
-    printf( "Could not open file\n" );
+    perror( "Could not open file\n" );
     success = false;
   }
 
@@ -45,7 +45,7 @@ QDomDocument * MainWindow::load_document( QString *xdfl_path )
 
   if( success && !doc->setContent( &file ) )
   {
-    printf( "Could not set document contents\n" );
+    perror( "Could not set document contents\n" );
     delete doc;
     success = false;
   }

@@ -1,5 +1,7 @@
 #include "renderablexdflpath.h"
 
+#include <cstdio>
+
 RenderableXDFLPath::RenderableXDFLPath( QDomNode &path_node )
 {
   assert( path_node.isElement() );
@@ -11,6 +13,26 @@ RenderableXDFLPath::RenderableXDFLPath( QDomNode &path_node )
     QDomNode point_dom = point_doms.at( i );
     points.append( convert_to_vector( point_dom ) );
   }
+
+  //print_path();
+}
+
+void RenderableXDFLPath::print_path()
+{
+  printf( "Path: [ " );
+
+  for( int i = 0; i < points.length(); i++ )
+  {
+    print_point( i );
+  }
+
+  printf( "]\n" );
+}
+
+void RenderableXDFLPath::print_point( int index )
+{
+  Vector3f *point = points[ index ];
+  printf( "( %f, %f, %f );\n", point->x(), point->y(), point->z() );
 }
 
 Vector3f * RenderableXDFLPath::convert_to_vector( QDomNode &point_node )
@@ -33,7 +55,7 @@ Vector3f * RenderableXDFLPath::convert_to_vector( QDomNode &point_node )
 void RenderableXDFLPath::glRender()
 {
 
-  glBegin( GL_LINES );
+  glBegin( GL_LINE_STRIP );
 
     glColor3f( 1.0f, 0.0f, 0.0f );
 

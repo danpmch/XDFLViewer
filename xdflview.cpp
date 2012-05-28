@@ -26,6 +26,7 @@ XDFLView::XDFLView( QList< RenderableXDFLObject * > *objs, QWidget *parent )
 void XDFLView::set_objects( QList< RenderableXDFLObject * > *objs )
 {
   objects = objs;
+  if( objects != NULL ) printf( "Total objects: %d\n", objects->length() );
   repaint();
 }
 
@@ -66,9 +67,25 @@ void XDFLView::paintGL()
     gluQuadricOrientation( sphere, GLU_OUTSIDE );
     gluQuadricNormals( sphere, GLU_SMOOTH );
     gluQuadricDrawStyle( sphere, GLU_FILL );
-    gluSphere( sphere, 1.0f, RESOLUTION, RESOLUTION );
+    gluSphere( sphere, 0.1f, RESOLUTION, RESOLUTION );
     gluDeleteQuadric( sphere );
   glPopMatrix();
+
+  glBegin( GL_LINES );
+
+    glColor3f( 1.0f, 0.0f, 0.0f );
+    glVertex3f( 0.0f, 0.0f, 0.0f );
+    glVertex3f( 1.0f, 0.0f, 0.0f );
+
+    glColor3f( 0.0f, 1.0f, 0.0f );
+    glVertex3f( 0.0f, 0.0f, 0.0f );
+    glVertex3f( 0.0f, 1.0f, 0.0f );
+
+    glColor3f( 0.0f, 0.0f, 1.0f );
+    glVertex3f( 0.0f, 0.0f, 0.0f );
+    glVertex3f( 0.0f, 0.0f, 1.0f );
+
+  glEnd();
 
   if( objects == NULL )
   {

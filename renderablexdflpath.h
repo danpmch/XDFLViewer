@@ -13,8 +13,11 @@ public:
     RenderableXDFLPath( QDomNode &path_node );
     void glRender();
 
+    void print_path();
+
 private:
 
+    void print_point( int index );
     Vector3f * convert_to_vector( QDomNode &point_node );
 
 private:
