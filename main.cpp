@@ -4,8 +4,12 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QString xdfl( "/home/black_adder/fabAhome/solder prefab.xdfl" );
-    MainWindow w( &xdfl );
+
+    QString *xdfl = NULL;
+    if( argc == 2 )
+      xdfl = new QString( argv[ 1 ] );
+
+    MainWindow w( xdfl );
     w.show();
 
     return a.exec();

@@ -29,26 +29,29 @@ void MainWindow::init_view( QString *xdfl_path )
 
 QDomDocument * MainWindow::load_document( QString *xdfl_path )
 {
+
   if( xdfl_path == NULL ) return NULL;
+
+  bool success = true;
 
   QFile file( *xdfl_path );
   if( !file.open( QIODevice::ReadOnly ) )
   {
     printf( "Could not open file\n" );
-    return NULL;
+    success = false;
   }
 
   QDomDocument *doc = new QDomDocument( "xdfl" );
 
-  if( !doc->setContent( &file ) )
+  if( success && !doc->setContent( &file ) )
   {
     printf( "Could not set document contents\n" );
     delete doc;
-    doc = NULL;
+    success = false;
   }
 
   file.close();
-  return doc;
+  return success ? doc : NULL;
 }
 
 MainWindow::~MainWindow()
