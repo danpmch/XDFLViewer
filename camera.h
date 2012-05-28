@@ -54,7 +54,13 @@ public:
     void move_forward( float offset = DEFAULT_OFFSET );
     void move_backward( float offset = DEFAULT_OFFSET );
 
+    void reset();
+
 private:
+
+    Vector3f original_position;
+    Vector3f original_up;
+    Vector3f original_forward;
 
     Vector3f position;
     Vector3f up;

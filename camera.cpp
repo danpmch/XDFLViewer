@@ -7,12 +7,14 @@ Camera::Camera( Vector3f &position, Vector3f &up, Vector3f &forward,
                 int width, int height, float fov, float znear,
                 float zfar )
 {
-  this->position = position;
+  this->position = original_position = position;
 
-  this->up = up;
+  this->up = original_up = up;
+  original_up.normalize();
   this->up.normalize();
 
-  this->forward = forward;
+  this->forward = original_forward = forward;
+  original_forward.normalize();
   this->forward.normalize();
 
   this->width = width;
@@ -204,4 +206,11 @@ void Camera::move_forward( float offset )
 void Camera::move_backward( float offset )
 {
   move_forward( -offset );
+}
+
+void Camera::reset()
+{
+  position = original_position;
+  forward = original_forward;
+  up = original_up;
 }

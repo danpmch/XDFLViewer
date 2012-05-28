@@ -169,3 +169,9 @@ void XDFLView::mouseReleaseEvent(QMouseEvent* event)
 {
   last_mouse_x = last_mouse_y = -1;
 }
+
+void XDFLView::reset()
+{
+  camera->reset();
+  repaint();
+}

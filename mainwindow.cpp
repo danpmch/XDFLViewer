@@ -95,3 +95,8 @@ void MainWindow::on_actionExit_triggered()
 {
   exit( 0 );
 }
+
+void MainWindow::on_actionResetCamera_triggered()
+{
+  view->reset();
+}
