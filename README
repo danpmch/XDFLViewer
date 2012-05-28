@@ -1,0 +1,8 @@
+
+The interface for the application is still a bit rough. Here are the controls that aren't listed in
+the menus:
+
+h,j,k,l : will move the camera left, back, forward, right respectively. The arrow keys may function similarly,
+  but there is a weird bug on my computer that causes them not to respond.
+
+J,K : will move the camera down, up respectively. Page Up/Down may work as well.
