@@ -11,6 +11,8 @@ class RenderableXDFLPath : public RenderableXDFLObject
 public:
 
     RenderableXDFLPath( QDomNode &path_node );
+    ~RenderableXDFLPath();
+
     void glRender();
 
     void print_path();

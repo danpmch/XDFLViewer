@@ -25,8 +25,15 @@ XDFLView::XDFLView( QList< RenderableXDFLObject * > *objs, QWidget *parent )
 
 void XDFLView::set_objects( QList< RenderableXDFLObject * > *objs )
 {
-  // TODO: figure out if you need to delete all the individual objects as well
-  if( objects != NULL ) delete objects;
+  if( objects != NULL )
+  {
+    foreach( RenderableXDFLObject *object, *objects )
+    {
+      delete object;
+    }
+
+    delete objects;
+  }
   objects = objs;
 
   if( objects != NULL ) printf( "Total objects: %d\n", objects->length() );

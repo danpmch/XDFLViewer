@@ -17,6 +17,14 @@ RenderableXDFLPath::RenderableXDFLPath( QDomNode &path_node )
   //print_path();
 }
 
+RenderableXDFLPath::~RenderableXDFLPath()
+{
+  foreach( Vector3f *v, points )
+  {
+    delete v;
+  }
+}
+
 void RenderableXDFLPath::print_path()
 {
   printf( "Path: [ " );
