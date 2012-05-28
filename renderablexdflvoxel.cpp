@@ -1,5 +1,6 @@
 #include "renderablexdflvoxel.h"
 #include <iostream>
+#include <cstdio>
 
 RenderableXDFLVoxel::RenderableXDFLVoxel( QDomNode &voxel_node )
 {
@@ -24,12 +25,11 @@ RenderableXDFLVoxel::RenderableXDFLVoxel( QDomNode &voxel_node )
   QDomNode volume_node = voxel_element.elementsByTagName( "volume" ).at( 0 );
   assert( volume_node.isElement() );
   volume = volume_node.toElement().text().toFloat();
-
-  std::cout << "Position: " << position << std::endl;
 }
 
 void RenderableXDFLVoxel::glRender()
 {
+//  printf( "Drawing a voxel\n" );
   static const float RESOLUTION = 10;
 
   // TODO: figure out how to take a cube root

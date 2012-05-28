@@ -10,7 +10,7 @@ using namespace Eigen;
 class RenderableXDFLObject
 {
 public:
-    static QList< RenderableXDFLObject * > * convert_to_renderable_objects( QDomDocument &xdfl_file );
+    static QList< RenderableXDFLObject * > * convert_to_renderable_objects( QDomDocument *xdfl_file );
     virtual void glRender() = 0;
 };
 
